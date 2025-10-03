@@ -10,6 +10,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { paths } from '@/lib/paths';
 import { formSchema, FormSchema } from '@/lib/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -28,7 +29,7 @@ const EmailPage = () => {
   const submitForm = form.handleSubmit((data) => {
     console.log(data);
 
-    router.push('/password');
+    router.push(paths.password);
   });
 
   return (
