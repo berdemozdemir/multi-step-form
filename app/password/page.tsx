@@ -1,18 +1,73 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { CustomFormInput } from '@/components/ui/CustomFormInput';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { formSchema, FormSchema } from '@/lib/schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
 const PasswordPage = () => {
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+      cofirmPassword: '',
+    },
+  });
+
+  const submitForm = form.handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
     <div className='space-y-4 rounded-md bg-white p-4 shadow-lg'>
-      <CustomFormInput label='Password' />
+      <Form {...form}>
+        <form className='space-y-4' onSubmit={submitForm}>
+          <FormField
+            control={form.control}
+            name='password'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
 
-      <CustomFormInput label='Confirm Password' />
+                <FormControl>
+                  <Input type='password' {...field} />
+                </FormControl>
 
-      <div className='text-end'>
-        <Button>Next</Button>
-      </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='cofirmPassword'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm Password</FormLabel>
+
+                <FormControl>
+                  <Input type='password' {...field} />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className='text-end'>
+            <Button type='submit'>Next</Button>
+          </div>
+        </form>
+      </Form>
     </div>
   );
 };
