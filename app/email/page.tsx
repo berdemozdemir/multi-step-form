@@ -12,12 +12,15 @@ import {
 import { Input } from '@/components/ui/input';
 import { paths } from '@/lib/paths';
 import { formSchema, FormSchema } from '@/lib/schema';
+import { useFormStore } from '@/lib/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 const EmailPage = () => {
   const router = useRouter();
+
+  const formStore = useFormStore();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -28,6 +31,12 @@ const EmailPage = () => {
 
   const submitForm = form.handleSubmit((data) => {
     console.log(data);
+
+    formStore.setData({
+      email: data.email,
+    });
+
+    console.log(useFormStore.getState());
 
     router.push(paths.password);
   });

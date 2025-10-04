@@ -11,10 +11,13 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { formSchema, FormSchema } from '@/lib/schema';
+import { useFormStore } from '@/lib/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 const PasswordPage = () => {
+  const formStore = useFormStore();
+
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -25,6 +28,12 @@ const PasswordPage = () => {
 
   const submitForm = form.handleSubmit((data) => {
     console.log(data);
+
+    formStore.setData({
+      password: data.password,
+    });
+
+    console.log(useFormStore.getState());
   });
 
   return (

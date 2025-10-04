@@ -15,9 +15,12 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useFormStore } from '@/lib/store';
 
 const NamePage = () => {
   const router = useRouter();
+
+  const formStore = useFormStore();
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -28,7 +31,12 @@ const NamePage = () => {
   });
 
   const submitForm = form.handleSubmit((data) => {
-    console.log(data);
+    formStore.setData({
+      firstName: data.firstName,
+      lastName: data.lastName,
+    });
+
+    console.log({ ...formStore });
 
     router.push(paths.email);
   });
