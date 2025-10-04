@@ -18,8 +18,8 @@ const PasswordPage = () => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
-      cofirmPassword: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
@@ -49,7 +49,7 @@ const PasswordPage = () => {
 
           <FormField
             control={form.control}
-            name='cofirmPassword'
+            name='confirmPassword'
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirm Password</FormLabel>

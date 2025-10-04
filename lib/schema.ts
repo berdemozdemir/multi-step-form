@@ -5,7 +5,7 @@ export const formSchema = z.object({
   lastName: z.string().min(3).optional(),
   email: z.email().optional(),
   password: z.string().optional(),
-  cofirmPassword: z.string().optional(),
+  confirmPassword: z.string().optional(),
 });
 
 export type FormSchema = z.infer<typeof formSchema>;
