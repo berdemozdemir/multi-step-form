@@ -2,15 +2,14 @@
 
 import { RegisterContainer } from '@/components/RegisterContainer';
 import { Button } from '@/components/ui/button';
+import { CustomFormInput } from '@/components/ui/CustomFormInput';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import { paths } from '@/lib/paths';
 import { formEmailSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
@@ -53,10 +52,8 @@ const EmailPage = () => {
             name='email'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
-
                 <FormControl>
-                  <Input {...field} />
+                  <CustomFormInput label='Email' {...field} />
                 </FormControl>
 
                 <FormMessage />

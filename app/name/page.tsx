@@ -11,13 +11,12 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import { useFormStore } from '@/lib/store';
 import { FormNameSchema } from '@/lib/types';
 import { RegisterContainer } from '@/components/RegisterContainer';
+import { CustomFormInput } from '@/components/ui/CustomFormInput';
 
 const NamePage = () => {
   const router = useRouter();
@@ -52,10 +51,8 @@ const NamePage = () => {
             name='firstName'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First Name</FormLabel>
-
                 <FormControl>
-                  <Input {...field} />
+                  <CustomFormInput label='First Name' {...field} />
                 </FormControl>
 
                 <FormMessage />
@@ -68,9 +65,8 @@ const NamePage = () => {
             name='lastName'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last Name</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <CustomFormInput label='Last Name' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

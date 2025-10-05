@@ -2,15 +2,14 @@
 
 import { RegisterContainer } from '@/components/RegisterContainer';
 import { Button } from '@/components/ui/button';
+import { CustomFormInput } from '@/components/ui/CustomFormInput';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import { paths } from '@/lib/paths';
 import { formPasswordSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
@@ -35,6 +34,8 @@ const PasswordPage = () => {
     setData({
       password: data.password,
     });
+
+    console.log(useFormStore.getState());
   });
 
   useEffect(() => {
@@ -50,10 +51,12 @@ const PasswordPage = () => {
             name='password'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
-
                 <FormControl>
-                  <Input type='password' {...field} />
+                  <CustomFormInput
+                    label='Password'
+                    isPasswordField
+                    {...field}
+                  />
                 </FormControl>
 
                 <FormMessage />
@@ -66,10 +69,12 @@ const PasswordPage = () => {
             name='confirmPassword'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-
                 <FormControl>
-                  <Input type='password' {...field} />
+                  <CustomFormInput
+                    label='Password'
+                    isPasswordField
+                    {...field}
+                  />
                 </FormControl>
 
                 <FormMessage />
