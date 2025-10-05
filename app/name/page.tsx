@@ -43,7 +43,7 @@ const NamePage = () => {
   });
 
   return (
-    <RegisterContainer>
+    <RegisterContainer isFirstPage>
       <Form {...form}>
         <form onSubmit={submitForm} className='space-y-4'>
           <FormField
