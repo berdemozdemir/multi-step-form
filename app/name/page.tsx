@@ -17,6 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useFormStore } from '@/lib/store';
 import { FormNameSchema } from '@/lib/types';
+import { RegisterContainer } from '@/components/RegisterContainer';
 
 const NamePage = () => {
   const router = useRouter();
@@ -43,7 +44,7 @@ const NamePage = () => {
   });
 
   return (
-    <div className='rounded-md bg-white p-6 shadow-lg'>
+    <RegisterContainer>
       <Form {...form}>
         <form onSubmit={submitForm} className='space-y-4'>
           <FormField
@@ -81,7 +82,7 @@ const NamePage = () => {
           </div>
         </form>
       </Form>
-    </div>
+    </RegisterContainer>
   );
 };
 

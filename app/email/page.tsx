@@ -1,5 +1,6 @@
 'use client';
 
+import { RegisterContainer } from '@/components/RegisterContainer';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -43,7 +44,7 @@ const EmailPage = () => {
   });
 
   return (
-    <div className='rounded-md bg-white p-4 shadow-lg'>
+    <RegisterContainer>
       <Form {...form}>
         <form className='space-y-4' onSubmit={submitForm}>
           <FormField
@@ -67,7 +68,7 @@ const EmailPage = () => {
           </div>
         </form>
       </Form>
-    </div>
+    </RegisterContainer>
   );
 };
 
