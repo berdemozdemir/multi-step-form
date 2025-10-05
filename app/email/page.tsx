@@ -23,12 +23,12 @@ import { useForm } from 'react-hook-form';
 const EmailPage = () => {
   const router = useRouter();
 
-  const { firstName, lastName, setData } = useFormStore();
+  const { firstName, lastName, email, setData } = useFormStore();
 
   const form = useForm<FormEmailSchema>({
     resolver: zodResolver(formEmailSchema),
     defaultValues: {
-      email: '',
+      email,
     },
   });
 

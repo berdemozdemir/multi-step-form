@@ -22,20 +22,20 @@ import { RegisterContainer } from '@/components/RegisterContainer';
 const NamePage = () => {
   const router = useRouter();
 
-  const formStore = useFormStore();
+  const { firstName, lastName, setData } = useFormStore();
 
   const form = useForm<FormNameSchema>({
     resolver: zodResolver(formNameSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      firstName,
+      lastName,
     },
   });
 
   const submitForm = form.handleSubmit((data) => {
-    formStore.setData({
-      firstName: data.firstName,
-      lastName: data.lastName,
+    setData({
+      firstName: data.firstName || '',
+      lastName: data.lastName || '',
     });
 
     console.log(useFormStore.getState());

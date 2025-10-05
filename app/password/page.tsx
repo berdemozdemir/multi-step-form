@@ -21,12 +21,12 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const PasswordPage = () => {
-  const { email, setData } = useFormStore();
+  const { email, password, setData } = useFormStore();
 
   const form = useForm<FormPasswordSchema>({
     resolver: zodResolver(formPasswordSchema),
     defaultValues: {
-      password: '',
+      password: password,
       confirmPassword: '',
     },
   });
