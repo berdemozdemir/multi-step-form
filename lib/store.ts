@@ -11,14 +11,14 @@ const initialState = {
 
 type FormState = Omit<FormSchema, 'confirmPassword'>;
 
-type FromAction = {
+type FormAction = {
   setData: (data: Partial<FormSchema>) => void;
 
   clearState: () => void;
 };
 
 export const useFormStore = create(
-  persist<FormState & FromAction>(
+  persist<FormState & FormAction>(
     (set) => ({
       ...initialState,
 

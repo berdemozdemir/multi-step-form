@@ -11,14 +11,17 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { paths } from '@/lib/paths';
 import { formPasswordSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
 import { FormPasswordSchema } from '@/lib/types';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { redirect } from 'next/navigation';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const PasswordPage = () => {
-  const formStore = useFormStore();
+  const { email, setData } = useFormStore();
 
   const form = useForm<FormPasswordSchema>({
     resolver: zodResolver(formPasswordSchema),
@@ -29,14 +32,14 @@ const PasswordPage = () => {
   });
 
   const submitForm = form.handleSubmit((data) => {
-    console.log(data);
-
-    formStore.setData({
+    setData({
       password: data.password,
     });
-
-    console.log(useFormStore.getState());
   });
+
+  useEffect(() => {
+    if (!email) redirect(paths.name);
+  }, [email]);
 
   return (
     <RegisterContainer>

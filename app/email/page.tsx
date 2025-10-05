@@ -16,13 +16,14 @@ import { formEmailSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
 import { FormEmailSchema } from '@/lib/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const EmailPage = () => {
   const router = useRouter();
 
-  const formStore = useFormStore();
+  const { firstName, lastName, setData } = useFormStore();
 
   const form = useForm<FormEmailSchema>({
     resolver: zodResolver(formEmailSchema),
@@ -32,16 +33,16 @@ const EmailPage = () => {
   });
 
   const submitForm = form.handleSubmit((data) => {
-    console.log(data);
-
-    formStore.setData({
+    setData({
       email: data.email,
     });
 
-    console.log(useFormStore.getState());
-
     router.push(paths.password);
   });
+
+  useEffect(() => {
+    if (!firstName || !lastName) redirect(paths.name);
+  }, [firstName, lastName]);
 
   return (
     <RegisterContainer>
