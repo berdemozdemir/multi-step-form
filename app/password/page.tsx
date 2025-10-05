@@ -10,16 +10,17 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { formSchema, FormSchema } from '@/lib/schema';
+import { formPasswordSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
+import { FormPasswordSchema } from '@/lib/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 const PasswordPage = () => {
   const formStore = useFormStore();
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormPasswordSchema>({
+    resolver: zodResolver(formPasswordSchema),
     defaultValues: {
       password: '',
       confirmPassword: '',

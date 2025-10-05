@@ -1,21 +1,20 @@
 import { create } from 'zustand';
-import { FormSchema } from './schema';
 import { createJSONStorage, persist } from 'zustand/middleware';
-
-type FormState = FormSchema;
-
-type FromAction = {
-  setData: (data: Partial<FormSchema>) => void;
-
-  clearState: () => void;
-};
+import { FormSchema } from './types';
 
 const initialState = {
   firstName: '',
   lastName: '',
   email: '',
   password: '',
-  confirmPassword: '',
+};
+
+type FormState = Omit<FormSchema, 'confirmPassword'>;
+
+type FromAction = {
+  setData: (data: Partial<FormSchema>) => void;
+
+  clearState: () => void;
 };
 
 export const useFormStore = create(

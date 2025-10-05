@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { paths } from '@/lib/paths';
-import { formSchema, FormSchema } from '@/lib/schema';
+import { formNameSchema } from '@/lib/schema';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,14 +16,15 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useFormStore } from '@/lib/store';
+import { FormNameSchema } from '@/lib/types';
 
 const NamePage = () => {
   const router = useRouter();
 
   const formStore = useFormStore();
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormNameSchema>({
+    resolver: zodResolver(formNameSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -36,7 +37,7 @@ const NamePage = () => {
       lastName: data.lastName,
     });
 
-    console.log({ ...formStore });
+    console.log(useFormStore.getState());
 
     router.push(paths.email);
   });

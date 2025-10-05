@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { paths } from '@/lib/paths';
-import { formSchema, FormSchema } from '@/lib/schema';
+import { formEmailSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
+import { FormEmailSchema } from '@/lib/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -22,8 +23,8 @@ const EmailPage = () => {
 
   const formStore = useFormStore();
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormEmailSchema>({
+    resolver: zodResolver(formEmailSchema),
     defaultValues: {
       email: '',
     },
