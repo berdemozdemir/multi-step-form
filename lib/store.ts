@@ -28,7 +28,7 @@ export const useFormStore = create(
     }),
     {
       name: 'form-store',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => sessionStorage),
       version: 1,
     }
   )
