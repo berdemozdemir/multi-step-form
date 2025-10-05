@@ -26,6 +26,10 @@ export const useFormStore = create(
 
       clearState: () => set(() => ({ ...initialState })),
     }),
-    { name: 'form-store', storage: createJSONStorage(() => localStorage) }
+    {
+      name: 'form-store',
+      storage: createJSONStorage(() => localStorage),
+      version: 1,
+    }
   )
 );
