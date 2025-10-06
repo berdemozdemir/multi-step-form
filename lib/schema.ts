@@ -7,16 +7,24 @@ export const formSchema = z.object({
   firstName: z
     .string()
     .min(3, { message: 'First name must be at least 3 characters' }),
+
   lastName: z
     .string()
     .min(3, { message: 'Last name must be at least 3 characters' }),
+
   email: z.email(),
+
+  userName: z
+    .string()
+    .min(3, { message: 'Username must be at least 3 characters' }),
+
   password: z
     .string()
     .regex(
       passwordRegex,
       'Password must include uppercase, lowercase, number, and special character'
     ),
+
   confirmPassword: z.string(),
 });
 
@@ -27,6 +35,7 @@ export const formNameSchema = formSchema.pick({
 
 export const formEmailSchema = formSchema.pick({
   email: true,
+  userName: true,
 });
 
 export const formPasswordSchema = formSchema

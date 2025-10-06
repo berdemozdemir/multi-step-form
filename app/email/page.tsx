@@ -22,12 +22,13 @@ import { useForm } from 'react-hook-form';
 const EmailPage = () => {
   const router = useRouter();
 
-  const { firstName, lastName, email, setData } = useFormStore();
+  const { firstName, lastName, email, userName, setData } = useFormStore();
 
   const form = useForm<FormEmailSchema>({
     resolver: zodResolver(formEmailSchema),
     defaultValues: {
       email,
+      userName,
     },
   });
 
@@ -54,6 +55,20 @@ const EmailPage = () => {
               <FormItem>
                 <FormControl>
                   <CustomFormInput label='Email' {...field} />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='userName'
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <CustomFormInput label='Username' {...field} />
                 </FormControl>
 
                 <FormMessage />
