@@ -35,6 +35,7 @@ const EmailPage = () => {
   const submitForm = form.handleSubmit((data) => {
     setData({
       email: data.email,
+      userName: data.userName,
     });
 
     router.push(paths.password);

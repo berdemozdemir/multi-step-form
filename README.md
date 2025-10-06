@@ -18,13 +18,12 @@ This project demonstrates form validation, step-based navigation, and state pers
 - **Form Handling:** React Hook Form
 - **Validation:** Zod
 - **State Management:** Zustand (with `persist` middleware)
-- **UI Components:** Shadcn/UI (Form, Input, Button, etc.)
 
 ---
 
 ## Demo
 
-You can visit the deployed app here: [https://multi-step-form-cyan.vercel.app/name](https://multi-step-form-cyan.vercel.app/name)
+You can visit the deployed app here: [https://multi-step-form-cyan.vercel.app](https://multi-step-form-cyan.vercel.app)
 
 ## 📦 Getting Started
 

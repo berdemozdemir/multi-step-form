@@ -15,11 +15,13 @@ import { formPasswordSchema } from '@/lib/schema';
 import { useFormStore } from '@/lib/store';
 import { FormPasswordSchema } from '@/lib/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const PasswordPage = () => {
+  const router = useRouter();
+
   const { email, password, setData } = useFormStore();
 
   const form = useForm<FormPasswordSchema>({
@@ -35,7 +37,7 @@ const PasswordPage = () => {
       password: data.password,
     });
 
-    console.log(useFormStore.getState());
+    router.push(paths.result);
   });
 
   useEffect(() => {
